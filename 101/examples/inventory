@@ -15,5 +15,5 @@ db2
 web2
 
 [dev]
-var1: valuexyz
-var2: valueyxz
+var1=valuexyz
+var2=valueyxz
