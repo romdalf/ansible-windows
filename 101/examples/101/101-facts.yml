@@ -1,8 +1,0 @@
----
-- name: playing with facts
-  hosts: all
-  gather_facts: true
-
-  tasks:
-  - debug: 
-      var: ansible_facts 
