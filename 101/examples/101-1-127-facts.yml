@@ -4,8 +4,8 @@
   gather_facts: true
 
   tasks:
-  # - debug: 
-  #     var: ansible_facts 
+  - debug: 
+      var: ansible_facts 
 
   # - debug: 
   #     msg: Host "{{ ansible_ }}"
@@ -16,9 +16,9 @@
   # - debug:
   #     msg: Total memory is 
 
-  # - debug:
-  #     msg: "{{ ansible_all_ipv4_addresses }}"
+  - debug:
+      msg: "{{ ansible_all_ipv4_addresses }}"
 
-  # - debug: 
-  #     msg: "My first IPv4 address is {{ ansible_all_ipv4_addresses }}"
+  - debug: 
+      msg: "My first IPv4 address is {{ ansible_all_ipv4_addresses[1] }}"
 
