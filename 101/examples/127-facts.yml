@@ -1,7 +1,7 @@
-# ---
-# - name: playing with facts
-#   hosts: localhost
-#   gather_facts: true
+---
+- name: playing with facts
+  hosts: localhost
+  gather_facts: true
 
   # tasks:
   # - debug: 
@@ -20,5 +20,3 @@
   # - debug: 
   #     msg: more than 2000mb
   #   when: ansible_ >= 2000
-
-  
