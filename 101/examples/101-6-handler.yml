@@ -9,12 +9,7 @@
     yum:
       name: "{{ packages }}"
       state: latest
-  
-  - name: start service
-    service: 
-      name: "{{ service }}"
-      enabled: yes
-      state: started
+    notify: restart service
 
   - name: deploy index test template
     template: 
@@ -22,5 +17,13 @@
       dest: /var/www/html/index.html
     when: role == "web"
   #   when: group_names == ['myweb']
-      
-      
+    notify: restart service
+
+
+  handlers:
+  - name: restart service
+    service: 
+      name: "{{ service }}"
+      enabled: yes
+      state: started
+
