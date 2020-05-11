@@ -7,6 +7,12 @@
   - debug: 
       var: ansible_facts 
 
+  - debug:
+      msg: 
+        - " Data type of 'ansible_hostname'  is {{ ansible_hostname | type_debug }} "
+        - " Data type of 'ansible_selinux' is {{ ansible_selinux | type_debug }} "
+        - " Data type of 'ansible_all_ipv4_addresses' is {{ ansible_all_ipv4_addresses | type_debug }} "
+
   - debug: 
       msg: "Host {{ ansible_hostname }} Linux distribution is {{ ansible_distribution }}"
 
@@ -24,8 +30,6 @@
   - debug: 
       msg: "My first IPv4 address is {{ ansible_all_ipv4_addresses[0] }}"
 
-  - debug:
-      msg: 
-        - " Data type of 'ansible_hostname'  is {{ ansible_hostname | type_debug }} "
-        - " Data type of 'ansible_selinux' is {{ ansible_selinux | type_debug }} "
-        - " Data type of 'ansible_all_ipv4_addresses' is {{ ansible_all_ipv4_addresses | type_debug }} "
+  - debug: 
+      msg: "My IPv4 addresses are {{ item }}"
+    loop: "{{ ansible_all_ipv4_addresses }}"
