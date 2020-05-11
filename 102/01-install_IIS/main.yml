@@ -1,0 +1,12 @@
+---
+- name: install IIS
+  win_feature:
+
+
+
+
+# win_iis_virtualdirectory – Configures a virtual directory in IIS
+# win_iis_webapplication – Configures IIS web applications
+# win_iis_webapppool – Configure IIS Web Application Pools
+# win_iis_webbinding – Configures a IIS Web site binding
+# win_iis_website – Configures a IIS Web site

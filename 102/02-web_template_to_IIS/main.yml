@@ -1,0 +1,3 @@
+---
+- name: deploy template to IIS
+  win_template:

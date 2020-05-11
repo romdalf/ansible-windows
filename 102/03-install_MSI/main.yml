@@ -1,0 +1,4 @@
+---
+- name: install MSI package
+  win_package:
+
