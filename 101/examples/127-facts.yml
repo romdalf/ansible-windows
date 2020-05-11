@@ -3,18 +3,18 @@
   hosts: localhost
   gather_facts: true
 
-   tasks:
+  tasks:
   # - debug: 
   #     var: ansible_facts 
 
   # - debug: 
-    #   msg: Host "{{ ansible_ }}"
+  #     msg: Host "{{ ansible_ }}"
 
   # - debug: 
-    #   msg: Host "{{ ansible_ }}" Linux distribution is 
+  #     msg: Host "{{ ansible_ }}" Linux distribution is 
 
   # - debug:
-    #   msg: Total memory is 
+  #     msg: Total memory is 
 
   # - debug: 
   #     msg: less than 2000mb
