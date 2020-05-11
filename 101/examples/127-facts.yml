@@ -8,12 +8,17 @@
   #     var: ansible_facts 
 
   # - debug: 
+    #   msg: Host "{{ ansible_ }}"
+
+  # - debug: 
+    #   msg: Host "{{ ansible_ }}" Linux distribution is 
+
+  # - debug: 
   #     msg: less than 2000mb
-  #   when: ansible_memtotal_mb <= 2000
+  #   when: ansible_ <= 2000
 
   # - debug: 
   #     msg: more than 2000mb
-  #   when: ansible_memtotal_mb >= 2000
+  #   when: ansible_ >= 2000
 
-  # - debug: 
-    #   msg: Host "{{ ansible_hostname }}" Linux distribution is "{{ ansible_distribution }}"
+  

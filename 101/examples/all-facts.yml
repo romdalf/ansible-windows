@@ -8,15 +8,15 @@
       var: ansible_facts 
 
   - debug: 
+      msg: "Host {{ ansible_hostname }} Linux distribution is {{ ansible_distribution }}"
+
+  - debug: 
       msg: less than 2000mb
     when: ansible_memtotal_mb <= 2000
 
   - debug: 
       msg: more than 2000mb
     when: ansible_memtotal_mb >= 2000
-
-  - debug: 
-      msg: "Host {{ ansible_hostname }} Linux distribution is {{ ansible_distribution }}"
 
   - debug:
       msg: "{{ ansible_all_ipv4_addresses }}"
@@ -26,6 +26,6 @@
 
   - debug:
       msg: 
-        - " Data type of 'ansible_architecture'  is {{ ansible_architecture | type_debug }} "
-        - " Data type of 'ansible_apparmor' is {{ ansible_apparmor | type_debug }} "
+        - " Data type of 'ansible_hostname'  is {{ ansible_hostname | type_debug }} "
+        - " Data type of 'ansible_selinux' is {{ ansible_selinux | type_debug }} "
         - " Data type of 'ansible_all_ipv4_addresses' is {{ ansible_all_ipv4_addresses | type_debug }} "
