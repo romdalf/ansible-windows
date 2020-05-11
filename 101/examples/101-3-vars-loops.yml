@@ -1,0 +1,36 @@
+---
+- name: playing with facts
+  hosts: localhost
+  gather_facts: true
+
+  vars:
+    packages: git
+
+  tasks:
+  - debug: 
+      var: ansible_facts   
+
+  - debug:
+      msg: "{{ ansible_all_ipv4_addresses }}"
+
+  # - debug: 
+  #     msg: "My first IPv4 address is {{ ansible_all_ipv4_addresses[0] }}"
+
+  # - debug: 
+  #     msg: "My IPv4 addresses are {{ item }}"
+  #   loop: "{{ ansible_all_ipv4_addresses }}"
+
+  # - debug: 
+  #     msg: less than 2000mb
+  #   when: ansible_memtotal_mb <= 2000
+
+  # - debug: 
+  #     msg: more than 2000mb
+  #   when: ansible_memtotal_mb >= 2000
+
+  # - debug: 
+  #     msg: "My packages {{ packages }}"
+
+
+
+
