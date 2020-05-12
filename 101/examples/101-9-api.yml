@@ -13,3 +13,6 @@
   - name: API call without token
     uri:
       url: https://ansibletower_hostname_or_ip/api/v2
+
+# https://docs.ansible.com/ansible/latest/modules/uri_module.html
+# https://docs.ansible.com/ansible-tower/latest/html/towerapi/browseable.html
