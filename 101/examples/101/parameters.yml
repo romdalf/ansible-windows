@@ -1,2 +1,2 @@
 ---
-packages: "wget,git,curl" 
+packages: [ntp,bind,screen]
