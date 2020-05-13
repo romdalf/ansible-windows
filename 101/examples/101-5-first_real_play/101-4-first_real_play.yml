@@ -8,13 +8,11 @@
     yum:
       name: "{{ packages }}"
       state: latest
-  
   - name: start service
     service: 
       name: "{{ service }}"
       enabled: yes
       state: started
-
   - name: deploy index test template
     template: 
       src: 101-4-index.j2
