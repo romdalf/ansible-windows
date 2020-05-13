@@ -1,6 +1,10 @@
 ---
 - name: install MSI package
-  win_package:
+  hosts: all
+  gather_facts: false
+
+  tasks:
+  - name: install msi package 
     win_package:
       path: C:\ansible_examples\httpd-2.2.25-win32-x86-no_ssl.msi
       state: present
