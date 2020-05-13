@@ -22,4 +22,5 @@
       packages:
         - httpd
         - httpd-tools
-
+  - debug: 
+      msg: "My package is still {{ packages }}"
