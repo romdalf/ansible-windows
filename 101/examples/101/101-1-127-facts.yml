@@ -7,18 +7,5 @@
   - debug: 
       var: ansible_facts 
 
-  # - debug: 
-  #     msg: Host "{{ ansible_ }}"
-
-  # - debug: 
-  #     msg: Host "{{ ansible_ }}" Linux distribution is 
-
-  # - debug:
-  #     msg: Total memory is 
-
-  - debug:
-      msg: "{{ ansible_all_ipv4_addresses }}"
-
   - debug: 
-      msg: "My first IPv4 address is {{ ansible_all_ipv4_addresses[1] }}"
-
+      msg: "Host {{ ansible_hostname }} runs {{ ansible_distribution }}"
