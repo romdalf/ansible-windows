@@ -1,33 +1,25 @@
 ---
 - name: playing with facts
   hosts: localhost
-  gather_facts: true
+  gather_facts: false
 
   vars:
     packages: git
 
   tasks:
   - debug: 
-      msg: less than 2000mb
-    when: ansible_memtotal_mb <= 2000
+      msg: "My package is {{ packages }}"
   - debug: 
-      msg: more than 2000mb
-    when: ansible_memtotal_mb >= 2000
+      msg: "My packages is {{ packages }}"
+    vars:
+      packages:
+        - httpd
+        - httpd-tools
   - debug: 
-      msg: "My IPv4 addresses are {{ item }}"
-    loop: "{{ ansible_all_ipv4_addresses }}"
-
-
-  - debug: 
-      msg: "My packages {{ packages }}"
-
-- name: ensure a list of packages installed
-  yum:
-    name: "{{ packages }}"
-  vars:
-    packages:
-    - httpd
-    - httpd-tools
-
-
+      msg: "My packages is {{ item }}"
+    loop: "{{ packages }}"
+    vars:
+      packages:
+        - httpd
+        - httpd-tools
 
