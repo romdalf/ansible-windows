@@ -1,6 +1,6 @@
 ---
 - name: playing with vault
-  hosts: all
+  hosts: localhost
   gather_facts: no
 
 #  include_vars:
