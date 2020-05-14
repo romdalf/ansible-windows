@@ -31,13 +31,14 @@
         * [Role](#role)
     * [A window to the world](#a-window-to-the-world)
       * [Use Cases](#use-cases)
-        * [Install IIS]()
-        * [Website and Web Content]()
-        * [Install MSI Package]()
-        * [Install IBM Software]()
-        * [Configure F5]()
-        * [Qualys Scan]()
-        * [Trigger a deployment via ARA]()
+        * [Install IIS](#install-iis)
+        * [Website](#website)
+        * [Web Content](#web-content)
+        * [Install MSI Package](#install-msi-package)
+        * [Install IBM Software](#install-ibm-software)
+        * [Configure F5](#configure-f5)
+        * [Qualys Scan](#qualys-scan)
+        * [Trigger a deployment via ARA](#trigger-a-deployment-via-ara)
 
 ## Introduction
 This repository is a run through Ansible components providing the necessary hands-on to build automation with a good set of principles and best practices. This is not a course.
@@ -1196,17 +1197,80 @@ Some good references:
 ### Use Cases
 
 #### Install IIS
+The use case is about enabling the feature in Windows. This has been tested with the team successfully. 
 
-#### Website and Web Content
+Here is an example out of the documentation:
+```
+- name: Install IIS
+  win_feature:
+    name: "Web-Server"
+    state: present
+    restart: yes
+    include_sub_features: yes
+    include_management_tools: yes
+```
+#### Website
+The use case is about configuring a website within the deployed IIS. This has been tested extensively with the team discovering some setbacks:
+* the module win_iis_website is a community module
+* while a fresh configuration is working, the reapplying of parameters are not consistent across the run
+* IIS is not consistently binding to the proper hostname/IP which seems to be linked to the configuration of the local host itself
+* some parameters are not passed properly like IPv6 
+
+Here is an example out of the documentation:
+```
+- name: Acme IIS site
+  win_iis_website:
+    name: Acme
+    state: started
+    port: 80
+    ip: 127.0.0.1
+    hostname: acme.local
+    application_pool: acme
+    physical_path: C:\sites\acme
+    parameters: logfile.directory:C:\sites\logs
+  register: website
+``` 
+Note: despite the some setbacks, as a community module, it can be used and improved accordingly to the customer needs.
+
+#### Web Content
+The use case is about deploying/copying a website based either on a payload or a templating. This has been tested with the team successfully while doing the first two use cases. 
+
+Here is an example out of the documentation:
+```
+- name: Create a file from a Jinja2 template
+  win_template:
+    src: /mytemplates/file.conf.j2
+    dest: C:\Temp\file.conf
+``` 
+
+Note: this module allows to create dynamic content based on variables and facts which a powerful mean to create configuration file as an example.
+Another approach can be investigate too via the win_copy module for larger data payload.
 
 #### Install MSI Package
+The use case is about deploying a MSI package on a Windows machine. This has been tested with the team successfully. However, each MSI package will need to be analyzed for deployment parameters or use the concept of templating to deploy the configuration files. 
+
+Note that the deployment needs to be done with the necessary flag to ensure a "advertize to all user" in order to be seen within the Windows Progams manager.
+
+Here is an example of the documentation:
+```
+- name: Install Remote Desktop Connection Manager from msi
+  win_package:
+    path: https://download.microsoft.com/download/A/F/0/AF0071F3-B198-4A35-AA90-C68D103BDCCF/rdcman.msi
+    product_id: '{0240359E-6A4C-4884-9E94-B397A02D893C}'
+    state: present
+``` 
 
 #### Install IBM Software
+Not tested as there was no existing software to deploy. However Ansible Galaxy provides IBM roles to do so. 
 
 #### Configure F5
+Not tested as there was no access to the F5 loadbalancers. However Automation Hub provides F5 Roles to do so.
+
+![preview](f5.png)
 
 #### Qualys Scan
+Not tested as there was no access to the Qualys environment. However the team confirmed that Qualys Scan can be triggered from a REST API. During the course of the workshop, automation using REST API have been tested successfully. 
 
 #### Trigger a deployment via ARA
-
+Not tested as there was no access to the ARA environment. However the team confirmed that ARA can be triggered from a REST API. During the course of the workshop, automation using REST API have been tested successfully. 
 
