@@ -1,6 +1,5 @@
 # Ansible Workshop
 
-
   * [Introduction](#introduction)
     * [What's Ansible](#whats-ansible)
     * [Installation](#installation)
