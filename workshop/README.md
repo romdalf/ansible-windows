@@ -65,7 +65,7 @@ Network Automation with Ansible
 The installation is straight forward since Ansible is available within almost all major distributions like CentOS/RHEL. For more details: https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
 
 ### The key to success
-Ansible is agentless and doesn't work in a pull approach but in push with credentials.
+Ansible is agent-less and doesn't work in a pull approach but in push with credentials.
 
 #### Linux
 When it comes to Linux, the connection towards the target is done through SSH.
@@ -149,7 +149,7 @@ web1
 db2
 web2
 ``` 
-This inventory will allow to deploy a common set of packages and configurations towards 'mydb' and 'myweb' then deploy the application set towards a the group 'dev' and/or 'uat' with key differentiator like dataset, testings, ... 
+This inventory will allow to deploy a common set of packages and configurations towards 'mydb' and 'myweb' then deploy the application set towards a the group 'dev' and/or 'uat' with key differentiator like data set, testings, ... 
 
 The last addition to the inventory is about variables liked to it like:
 ```
@@ -291,7 +291,7 @@ So:
 * use linting module in your favorite Code editor
 * plan-create-test-(feedback-)deliver loop (think DevOps) then refactor and modularize later
 
-The two following tasks will produce exactly the same but the second one is the prefered approach for ease of reading:
+The two following tasks will produce exactly the same but the second one is the preferred approach for ease of reading:
 ```
 - name: http service
   service: name=httpd state=started enabled=yes
@@ -314,7 +314,7 @@ ansible-doc -l
 ansible-doc <module name>
 ansible-doc service
 ```
-All module documentaion comes with a parameter tables and examples which are really useful to start writing a playbook. Use them without moderation!
+All module documentation comes with a parameter tables and examples which are really useful to start writing a playbook. Use them without moderation!
 
 ### No fake news, only facts
 Remember the big blob:
@@ -590,7 +590,7 @@ To execute a playbook with a Vault use the following:
 ansible-playbook --ask-vault-pass playbook.yml
 ``` 
 
-A very good reference of all the combinaison can be found here: https://www.digitalocean.com/community/tutorials/how-to-use-vault-to-protect-sensitive-ansible-data-on-ubuntu-16-04
+A very good reference of all the combination can be found here: https://www.digitalocean.com/community/tutorials/how-to-use-vault-to-protect-sensitive-ansible-data-on-ubuntu-16-04
 
 Let's use the 101-7-vault folder to create a vault file and use it in a playbook.
 
