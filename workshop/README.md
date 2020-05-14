@@ -28,7 +28,7 @@
     * [Playbook - Welcome the new user](#playbook---welcome-the-new-user)
     * [Roles](#roles)
         * [Path to the role](#path-to-the-role)
-        * [Role?](#role)
+        * [Role](#role)
     * [A window to the world](#a-window-to-the-world)
 
 
@@ -1184,9 +1184,20 @@ Some good references:
 * https://www.digitalocean.com/community/tutorials/how-to-use-ansible-roles-to-abstract-your-infrastructure-environment
 
 
-### A window to the world
-Let´s create a first playbook for Windows to gather the disk facts:
-https://docs.ansible.com/ansible/latest/modules/win_disk_facts_module.html#win-disk-facts-module
+## A window to the world
 
-Here is a reference for the secrets or the previous references can help too: https://docs.ansible.com/ansible/latest/user_guide/windows_winrm.html#inventory-options
+### Use cases
 
+#### Install IIS
+
+#### Website and Web content
+
+#### Install MSI package
+
+#### Install IBM Software
+
+#### Configure a F5
+
+#### Qualys Scan
+
+#### Trigger a deployment via ARA
