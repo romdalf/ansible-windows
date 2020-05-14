@@ -39,6 +39,7 @@
         * [Configure F5](#configure-f5)
         * [Qualys Scan](#qualys-scan)
         * [Trigger a deployment via ARA](#trigger-a-deployment-via-ara)
+    * [Parked Questions](#parked-questions)
 
 ## Introduction
 This repository is a run through Ansible components providing the necessary hands-on to build automation with a good set of principles and best practices. This is not a course.
@@ -274,6 +275,9 @@ Some principles to keep in mind during this workshop and as takeaways:
 * plan-create-test-(feedback-)deliver loop (think DevOps) then refactor and modularize later
 * use modules as much as possible!
 * resort to using shell or command only when a module is not available
+
+As reference to keep closed-by:
+* https://docs.ansible.com/ansible/latest/user_guide/playbooks_best_practices.html
 
 ### Write with style
 Along with the thousands benefits of using Ansible, one "cons" is definitely linked to YAML and the strict syntax that will give any Automation Engineers some head scratching and some swearing...
@@ -1249,7 +1253,7 @@ Another approach can be investigate too via the win_copy module for larger data 
 #### Install MSI Package
 The use case is about deploying a MSI package on a Windows machine. This has been tested with the team successfully. However, each MSI package will need to be analyzed for deployment parameters or use the concept of templating to deploy the configuration files. 
 
-Note that the deployment needs to be done with the necessary flag to ensure a "advertize to all user" in order to be seen within the Windows Progams manager.
+Note: that the deployment needs to be done with the necessary flag to ensure a "advertize to all user" in order to be seen within the Windows Progams manager.
 
 Here is an example of the documentation:
 ```
@@ -1259,6 +1263,8 @@ Here is an example of the documentation:
     product_id: '{0240359E-6A4C-4884-9E94-B397A02D893C}'
     state: present
 ``` 
+
+As a side, when uninstalling software, some folders might not be removed by the installer. This can be easily detected and cleaned within the very same automation.
 
 #### Install IBM Software
 Not tested as there was no existing software to deploy. However Ansible Galaxy provides IBM roles to do so. 
@@ -1274,3 +1280,61 @@ Not tested as there was no access to the Qualys environment. However the team co
 #### Trigger a deployment via ARA
 Not tested as there was no access to the ARA environment. However the team confirmed that ARA can be triggered from a REST API. During the course of the workshop, automation using REST API have been tested successfully. 
 
+## Parked Questions
+
+### Local Facts
+While discussing and using the concept of Ansible facts, a question came about the ability to use "custom" facts like with Factors.
+
+This can be achieve by creating on the target machine an entry within the /etc/ansible/facts.d/. Here is an example from the documentation:
+
+Assuming: /etc/ansible/facts.d/preferences.fact with the content:
+```
+[general]
+asdf=1
+bar=2
+```
+by calling the ansible_local within the playbook run, the following will be given:
+```
+"ansible_local": {
+        "preferences": {
+            "general": {
+                "asdf" : "1",
+                "bar"  : "2"
+            }
+        }
+ }
+``` 
+The values can be reached as followed:
+```
+{{ ansible_local['preferences']['general']['asdf'] }}
+```
+
+Reference: https://docs.ansible.com/ansible/latest/user_guide/playbooks_variables.html#local-facts-facts-d
+
+### Playbook hanging
+While discussing the run of playbooks, some tasks are just hanging forever with no feedback. These can be potentially worked in an asynchronous way and provide the necessary information by poking the status. Here is an example with the RPM based package manager:
+```
+- name: RHEL Update
+  yum:
+    name: '*'
+    state: latest
+  async: 600
+  register: yumsleeper
+
+- name: 'RHEL Update - check on async task'
+  async_status:
+    jid: "{{ yumsleeper.ansible_job_id }}"
+  register: job_result
+  until: job_result.finished
+  retries: 30
+``` 
+https://docs.ansible.com/ansible/latest/modules/async_status_module.html
+
+### Special variables
+These a special keywords that hide lots of magic and comes really handy when thriving to more powerful plays and roles. To keep close-by:
+https://docs.ansible.com/ansible/latest/reference_appendices/special_variables.html
+
+### Playbook Control
+When working with playbooks and a large amount of tasks and/or hosts, thre is always the needs of controls. The following references will provide the necessary informations to have strategies and other concepts like delegation, rolling, and other actions:
+* https://docs.ansible.com/ansible/latest/user_guide/playbooks_strategies.html
+* https://docs.ansible.com/ansible/latest/user_guide/playbooks_delegation.html
