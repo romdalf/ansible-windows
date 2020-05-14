@@ -30,7 +30,14 @@
         * [Path to the role](#path-to-the-role)
         * [Role](#role)
     * [A window to the world](#a-window-to-the-world)
-
+      * [Use Cases](#use-cases)
+        * [Install IIS]()
+        * [Website and Web Content]()
+        * [Install MSI Package]()
+        * [Install IBM Software]()
+        * [Configure F5]()
+        * [Qualys Scan]()
+        * [Trigger a deployment via ARA]()
 
 ## Introduction
 This repository is a run through Ansible components providing the necessary hands-on to build automation with a good set of principles and best practices. This is not a course.
@@ -1186,18 +1193,20 @@ Some good references:
 
 ## A window to the world
 
-### Use cases
+### Use Cases
 
 #### Install IIS
 
-#### Website and Web content
+#### Website and Web Content
 
-#### Install MSI package
+#### Install MSI Package
 
 #### Install IBM Software
 
-#### Configure a F5
+#### Configure F5
 
 #### Qualys Scan
 
 #### Trigger a deployment via ARA
+
+
