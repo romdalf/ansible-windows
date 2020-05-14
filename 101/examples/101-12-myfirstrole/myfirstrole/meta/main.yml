@@ -1,6 +1,6 @@
 galaxy_info:
-  author: your name
-  description: your description
+  author: The Team
+  description: Basic role to deploy HTTPD and MYSQL with a template
   company: your company (optional)
 
   # If the issue tracker for your role is not on github, uncomment the
