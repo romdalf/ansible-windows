@@ -1,4 +1,4 @@
-# 101 - Ansible Crash-Course Workshop
+# Ansible Workshop
 
 - [101 - Ansible Crash-Course Workshop](#101---ansible-crash-course-workshop)
   * [Introduction](#introduction)
