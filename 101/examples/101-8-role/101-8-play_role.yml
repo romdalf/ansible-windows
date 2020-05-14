@@ -1,5 +1,0 @@
----
-- name: taking advantage of roles
-  hosts: all
-  roles:
-    - mynewrole
