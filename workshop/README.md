@@ -1,6 +1,6 @@
 # Ansible Workshop
 
-- [101 - Ansible Crash-Course Workshop](#101---ansible-crash-course-workshop)
+- [Ansible Workshop](#101---ansible-crash-course-workshop)
   * [Introduction](#introduction)
     * [What's Ansible](#whats-ansible)
     * [Installation](#installation)
