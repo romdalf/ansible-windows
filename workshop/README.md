@@ -40,6 +40,10 @@
         * [Qualys Scan](#qualys-scan)
         * [Trigger a deployment via ARA](#trigger-a-deployment-via-ara)
     * [Parked Questions](#parked-questions)
+      * [Local Facts](#local-facts)
+      * [Playbook hanging](#playbook-hanging)
+      * [Special variables](#special-variables)
+      * [Playbook Control](#playbook-control)
 
 ## Introduction
 This repository is a run through Ansible components providing the necessary hands-on to build automation with a good set of principles and best practices. This is not a course.
