@@ -43,6 +43,9 @@
       * [Playbook hanging](#playbook-hanging)
       * [Special variables](#special-variables)
       * [Playbook Control](#playbook-control)
+    * [Dynamic Inventory](#dynamic-inventory)
+      * [Inventory Scripts](#inventory-scripts)
+      * [Inventory Plugins](#inventory-plugins)
 
 ## Introduction
 This repository is a run through Ansible components providing the necessary hands-on to build automation with a good set of principles and best practices. This is not a course.
@@ -1348,7 +1351,8 @@ There are a couple ways to do so:
 
 ### Inventory Scripts
 With the help of Inventory Scripts, either for Ansible or Ansible Tower, dynamic inventories can be created. There are plenty of examples within the Ansible repository providing good insights on how to create a custom dynamic Inventory.
-Note that starting Ansible Tower 3.7, Inventory Scripts are deprecated in favor of Inventory Plugins. 
+
+* Note that starting Ansible Tower 3.7, Inventory Scripts are deprecated in favor of Inventory Plugins. 
 
 ### Inventory Plugins
 With the help of Inventory Plugins within Ansible Tower allowing connexions to systems like Red Hat Satellite, CloudForms, OpenStack but also AWS, Azure or VMware vCenter. 
@@ -1357,8 +1361,7 @@ https://docs.ansible.com/ansible-tower/latest/html/userguide/inventories.html#in
 This is the way forward to build dynamic inventories.
 
 Here is a an example with Foreman/Satellite 6:
-
-https://github.com/ansible-collections/community.general/blob/master/scripts/inventory/foreman.ini
+* https://github.com/ansible-collections/community.general/blob/master/scripts/inventory/foreman.ini
 
 ``` 
 # Foreman inventory (https://github.com/theforeman/foreman_ansible_inventory)
